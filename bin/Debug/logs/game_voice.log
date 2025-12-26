@@ -1,0 +1,16 @@
+﻿[2025-12-07 18:30:33.493] [INFO] GameVoiceLogger initialized
+[2025-12-07 18:30:33.494] [LIFECYCLE] Lifecycle: StartGameVoiceControl - Game: Subway Surfers (ID: 1)
+[2025-12-07 18:30:33.495] [ERROR] GameVoiceListener.exe not found at F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\GameVoiceListener\GameVoiceListener.exe
+[2025-12-07 18:31:19.596] [LIFECYCLE] Lifecycle: StopGameVoiceControl - Stopping game voice control
+[2025-12-07 18:31:19.604] [LIFECYCLE] Lifecycle: StopGameVoiceControl - Game voice control stopped successfully
+[2025-12-07 18:31:19.606] [CONTEXT] Context switch: PocketSphinx -> VOSK (Game exited)
+[2025-12-07 18:31:19.609] [LIFECYCLE] Lifecycle: StopGameVoiceControl - Stopping game voice control
+[2025-12-07 18:31:19.611] [LIFECYCLE] Lifecycle: StopGameVoiceControl - Game voice control stopped successfully
+[2025-12-07 22:58:03.622] [INFO] GameVoiceLogger initialized
+[2025-12-07 22:58:03.630] [LIFECYCLE] Lifecycle: StartGameVoiceControl - Game: Subway Surfers (ID: 1)
+[2025-12-07 22:58:03.640] [ERROR] GameVoiceListener.exe not found at F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\GameVoiceListener\GameVoiceListener.exe
+[2025-12-07 22:58:56.981] [LIFECYCLE] Lifecycle: StopGameVoiceControl - Stopping game voice control
+[2025-12-07 22:58:56.997] [LIFECYCLE] Lifecycle: StopGameVoiceControl - Game voice control stopped successfully
+[2025-12-07 22:58:57.002] [CONTEXT] Context switch: PocketSphinx -> VOSK (Game exited)
+[2025-12-07 22:58:57.011] [LIFECYCLE] Lifecycle: StopGameVoiceControl - Stopping game voice control
+[2025-12-07 22:58:57.015] [LIFECYCLE] Lifecycle: StopGameVoiceControl - Game voice control stopped successfully
