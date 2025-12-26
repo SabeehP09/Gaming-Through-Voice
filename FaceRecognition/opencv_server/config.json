@@ -1,0 +1,23 @@
+{
+    "server": {
+        "host": "127.0.0.1",
+        "port": 5000,
+        "debug": false
+    },
+    "face_detection": {
+        "model_type": "dnn",
+        "confidence_threshold": 0.7,
+        "min_face_size": 80
+    },
+    "face_preprocessing": {
+        "enable_histogram_equalization": true
+    },
+    "face_recognition": {
+        "model_path": "models/openface_nn4.small2.v1.t7",
+        "authentication_threshold": 0.85,
+        "embeddings_per_user": 5
+    },
+    "database": {
+        "connection_string": "DRIVER={SQL Server};SERVER=DESKTOP-D5T3NOQ;DATABASE=GamingVoiceRecognitionDB;Trusted_Connection=yes;"
+    }
+}

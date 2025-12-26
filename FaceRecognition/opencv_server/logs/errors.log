@@ -1,0 +1,435 @@
+2025-12-07 08:08:07 - app - ERROR - [app.py:270] - Failed to decode base64 image: Incorrect padding
+2025-12-07 08:08:07 - app - ERROR - [app.py:270] - Failed to decode base64 image: Failed to decode image
+2025-12-07 08:08:07 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Data source name not found and no default driver specified (0) (SQLDriverConnect); [IM002] [Microsoft][ODBC Driver Manager] Invalid connection string attribute (0)')
+2025-12-07 08:08:24 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 08:08:24 - test_logger - ERROR - [test_error_handling.py:200] - Test error message
+2025-12-07 08:09:00 - app - ERROR - [app.py:270] - Failed to decode base64 image: Incorrect padding
+2025-12-07 08:09:00 - app - ERROR - [app.py:270] - Failed to decode base64 image: Failed to decode image
+2025-12-07 08:09:00 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Data source name not found and no default driver specified (0) (SQLDriverConnect); [IM002] [Microsoft][ODBC Driver Manager] Invalid connection string attribute (0)')
+2025-12-07 08:09:17 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 08:09:17 - test_logger - ERROR - [test_error_handling.py:200] - Test error message
+2025-12-07 09:03:11 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:03:11 - app - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:03:11 - app - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-07 09:03:28 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:18:49 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:18:49 - app - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:18:49 - app - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-07 09:19:06 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:19:23 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:19:40 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:19:57 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:20:14 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:20:31 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:20:48 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:21:05 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:21:22 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:21:39 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:21:56 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:22:13 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:22:30 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:22:47 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:23:04 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:23:04 - app - ERROR - [app.py:278] - Failed to decode base64 image: Incorrect padding
+2025-12-07 09:23:04 - app - ERROR - [app.py:278] - Failed to decode base64 image: Failed to decode image
+2025-12-07 09:23:04 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Data source name not found and no default driver specified (0) (SQLDriverConnect); [IM002] [Microsoft][ODBC Driver Manager] Invalid connection string attribute (0)')
+2025-12-07 09:23:21 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:23:21 - test_logger - ERROR - [test_error_handling.py:200] - Test error message
+2025-12-07 09:23:38 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:23:38 - app - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:23:38 - app - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-07 09:23:55 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:23:57 - app - ERROR - [app.py:278] - Failed to decode base64 image: Incorrect padding
+2025-12-07 09:23:57 - app - ERROR - [app.py:278] - Failed to decode base64 image: Failed to decode image
+2025-12-07 09:23:57 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Data source name not found and no default driver specified (0) (SQLDriverConnect); [IM002] [Microsoft][ODBC Driver Manager] Invalid connection string attribute (0)')
+2025-12-07 09:24:14 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:24:14 - test_logger - ERROR - [test_error_handling.py:200] - Test error message
+2025-12-07 09:38:14 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:38:14 - __main__ - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:38:14 - __main__ - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-07 09:38:49 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:38:49 - __main__ - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:38:49 - __main__ - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-07 09:40:54 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:40:54 - __main__ - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 09:40:54 - __main__ - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-07 15:41:28 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 15:41:28 - __main__ - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 15:41:28 - __main__ - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-07 15:59:01 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 15:59:01 - __main__ - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\Old version\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-07 15:59:01 - __main__ - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-08 01:32:59 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-08 01:32:59 - __main__ - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-08 01:32:59 - __main__ - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-08 02:02:50 - database_manager - ERROR - [database_manager.py:50] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-08 02:02:50 - __main__ - ERROR - [app.py:222] - Failed to connect to database: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 218, in initialize_components
+    database_manager = DatabaseManager(connection_string)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 46, in __init__
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 63, in _get_connection
+    return pyodbc.connect(self.connection_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (5)')
+2025-12-08 02:02:50 - __main__ - ERROR - [app.py:223] - Please ensure SQL Server is running and connection string is correct
+2025-12-08 02:08:02 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:02 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:02 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:02 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:03 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:03 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:04 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:04 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:04 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:04 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:23 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:23 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:24 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:24 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:25 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:25 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:26 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:26 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:26 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 14: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:08:26 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:28 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:28 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:28 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:28 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:29 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:29 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:30 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:30 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:31 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:31 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:44 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:44 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:45 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:45 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:46 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:46 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:47 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:47 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:47 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:17:47 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:18:16 - database_manager - ERROR - [database_manager.py:205] - Failed to retrieve embeddings for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:18:16 - __main__ - ERROR - [app.py:844] - Failed to retrieve embeddings for user 15: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 842, in authenticate_face
+    stored_embeddings = database_manager.get_embeddings_for_user(user_id)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 187, in get_embeddings_for_user
+    cursor.execute(query, (user_id,))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:32 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:32 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:32 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:32 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:33 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:33 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:34 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:34 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:34 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:27:34 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:32 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:32 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:33 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:33 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:34 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:34 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:35 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:35 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:35 - database_manager - ERROR - [database_manager.py:144] - Failed to store embedding for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:35 - __main__ - ERROR - [app.py:511] - Database storage failed: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 502, in register_face
+    database_manager.store_embedding(user_id, embedding)
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 134, in store_embedding
+    cursor.execute(query, (user_id, embedding_json, datetime.now()))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:58 - database_manager - ERROR - [database_manager.py:205] - Failed to retrieve embeddings for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+2025-12-08 02:28:58 - __main__ - ERROR - [app.py:844] - Failed to retrieve embeddings for user 16: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+Traceback (most recent call last):
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\app.py", line 842, in authenticate_face
+    stored_embeddings = database_manager.get_embeddings_for_user(user_id)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Abdullah\GamingThroughVoiceRecognitionSystem\FaceRecognition\opencv_server\database_manager.py", line 187, in get_embeddings_for_user
+    cursor.execute(query, (user_id,))
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'FaceEmbeddings'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")

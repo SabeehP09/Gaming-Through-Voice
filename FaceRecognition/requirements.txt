@@ -1,0 +1,7 @@
+# iPhone-Level Face Recognition Dependencies
+face_recognition==1.3.0
+dlib==19.24.0
+numpy==1.24.3
+Pillow==10.0.0
+flask==2.3.2
+flask-cors==4.0.0
