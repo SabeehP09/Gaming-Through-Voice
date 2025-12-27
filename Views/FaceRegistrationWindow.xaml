@@ -1,0 +1,116 @@
+<Window x:Class="GamingThroughVoiceRecognitionSystem.Views.FaceRegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Face Registration"
+        MinHeight="500" MinWidth="650"
+        MaxHeight="800" MaxWidth="1000"
+        Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Border CornerRadius="20" Background="{DynamicResource BackgroundDarkBrush}" 
+            BorderBrush="{DynamicResource GlassBorderBrush}" BorderThickness="2">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" BlurRadius="30" ShadowDepth="0" Opacity="0.5"/>
+        </Border.Effect>
+
+        <Grid>
+            <!-- Camera Feed -->
+            <Image x:Name="CameraFeed" Stretch="UniformToFill" Margin="20"/>
+
+            <!-- Overlay -->
+            <Grid x:Name="LoadingOverlay" Background="#80000000" Visibility="Visible">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="📷" FontSize="80" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                    <TextBlock Text="Initializing Camera..." FontSize="24" Foreground="White" 
+                               FontWeight="Bold" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Face Detection Frame -->
+            <Border Width="300" Height="400" BorderBrush="{DynamicResource PrimaryColorBrush}" 
+                    BorderThickness="3" CornerRadius="150" VerticalAlignment="Center">
+                <Border.Effect>
+                    <DropShadowEffect Color="{StaticResource PrimaryGlowColor}" BlurRadius="20" ShadowDepth="0" Opacity="0.8"/>
+                </Border.Effect>
+            </Border>
+
+            <!-- Instructions -->
+            <Border VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0"
+                    Background="{DynamicResource GlassBackgroundBrush}" 
+                    BorderBrush="{DynamicResource GlassBorderBrush}" 
+                    BorderThickness="2" CornerRadius="15" Padding="20,10">
+                <TextBlock x:Name="InstructionText" Text="Position your face in the circle" 
+                           FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}" FontWeight="Bold"/>
+            </Border>
+
+            <!-- Progress Indicator -->
+            <Border x:Name="ProgressPanel" VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Background="{DynamicResource GlassBackgroundBrush}" 
+                    BorderBrush="{DynamicResource GlassBorderBrush}" 
+                    BorderThickness="2" CornerRadius="20" Padding="30,20"
+                    Visibility="Collapsed">
+                <StackPanel>
+                    <TextBlock x:Name="ProgressText" Text="Capturing..." 
+                               FontSize="24" Foreground="{DynamicResource TextPrimaryBrush}" 
+                               FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="CountdownText" Text="5" 
+                               FontSize="48" Foreground="{DynamicResource PrimaryColorBrush}" 
+                               FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <ProgressBar x:Name="ProgressBar" Height="10" Width="200" 
+                                 Margin="0,10,0,0" Minimum="0" Maximum="5" Value="0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Capture Button -->
+            <Border x:Name="CaptureButtonPanel" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,30"
+                    Background="{DynamicResource GlassBackgroundBrush}" 
+                    BorderBrush="{DynamicResource GlassBorderBrush}" 
+                    BorderThickness="2" CornerRadius="25">
+                <Border.Effect>
+                    <DropShadowEffect Color="{StaticResource PrimaryGlowColor}" BlurRadius="15" ShadowDepth="0" Opacity="0.6"/>
+                </Border.Effect>
+                <Button x:Name="CaptureButton" Content="📸 START REGISTRATION" 
+                        Width="250" Height="50" 
+                        Background="Transparent" BorderThickness="0"
+                        Foreground="{DynamicResource TextPrimaryBrush}"
+                        FontSize="16" FontWeight="Bold" Cursor="Hand"
+                        Click="CaptureButton_Click"/>
+            </Border>
+
+            <!-- Close Button -->
+            <Button Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                    Margin="0,10,10,0" Click="CloseButton_Click"
+                    Background="{DynamicResource GlassBackgroundBrush}"
+                    BorderBrush="#FF4444" BorderThickness="2" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="20">
+                            <TextBlock Text="✕" FontSize="20" FontWeight="Bold" 
+                                       Foreground="#FF4444" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Success Overlay -->
+            <Grid x:Name="SuccessOverlay" Background="#CC000000" Visibility="Collapsed">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="✓" FontSize="100" Foreground="#00FF00" 
+                               HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                    <TextBlock x:Name="SuccessText" Text="Face Registered Successfully!" FontSize="28" Foreground="White" 
+                               FontWeight="Bold" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
