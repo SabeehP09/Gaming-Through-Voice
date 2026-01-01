@@ -1,0 +1,300 @@
+// ============================================================================
+// VOICE COMMAND TEMPLATE
+// Copy this template to add new voice commands to GlobalVoiceCommandHandler.cs
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// STEP 1: Add to ProcessGlobalCommand switch statement
+// ----------------------------------------------------------------------------
+
+case "your command":
+case "alternative name":      // Optional: Add aliases
+case "another way to say it": // Optional: More aliases
+    YourCustomAction();
+    break;
+
+// ----------------------------------------------------------------------------
+// STEP 2: Add the action method (place in appropriate region)
+// ----------------------------------------------------------------------------
+
+/// <summary>
+/// Description of what this command does
+/// </summary>
+private static void YourCustomAction()
+{
+    Application.Current.Dispatcher.Invoke(() =>
+    {
+        try
+        {
+            Debug.WriteLine("[VOICE] Executing: Your Custom Action");
+            
+            // ================================================================
+            // YOUR CODE HERE
+            // ================================================================
+            
+            // Example 1: Navigate to a window
+            var myWindow = Application.Current.Windows.OfType<MyWindow>().FirstOrDefault();
+            if (myWindow != null)
+            {
+                myWindow.Activate();
+            }
+            else
+            {
+                myWindow = new MyWindow();
+                myWindow.Show();
+            }
+            
+            // Example 2: Call a method on HomeWindow
+            var homeWindow = Application.Current.Windows.OfType<HomeWindow>().FirstOrDefault();
+            if (homeWindow != null)
+            {
+                // homeWindow.YourMethod();
+            }
+            
+            // Example 3: Perform a simple action
+            // MessageBox.Show("Command executed!");
+            
+            // Example 4: Toggle something
+            // someObject.IsEnabled = !someObject.IsEnabled;
+            
+            // ================================================================
+            
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"[VOICE] ERROR in YourCustomAction: {ex.Message}");
+        }
+    });
+}
+
+// ============================================================================
+// WINDOW-SPECIFIC COMMAND TEMPLATE
+// Add to ProcessWindowSpecificCommand method
+// ============================================================================
+
+// Add this inside ProcessWindowSpecificCommand method
+if (window is YourWindowType yourWindow)
+{
+    switch (command)
+    {
+        case "your command":
+        case "alternative":
+            Debug.WriteLine("[VOICE] YourWindow: Your command");
+            
+            // Option 1: Call window method directly
+            yourWindow.YourMethod();
+            return true;
+            
+        case "another command":
+            Debug.WriteLine("[VOICE] YourWindow: Another command");
+            
+            // Option 2: Perform action inline
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                // Your code here
+            });
+            return true;
+    }
+}
+
+// ============================================================================
+// COMMON PATTERNS
+// ============================================================================
+
+// Pattern 1: Navigate to specific window
+// --------------------------------------
+private static void NavigateToMyWindow()
+{
+    Application.Current.Dispatcher.Invoke(() =>
+    {
+        try
+        {
+            Debug.WriteLine("[VOICE] Navigating to MyWindow");
+            
+            var myWindow = Application.Current.Windows.OfType<MyWindow>().FirstOrDefault();
+            if (myWindow != null)
+            {
+                myWindow.Activate();
+            }
+            else
+            {
+                myWindow = new MyWindow();
+                myWindow.Show();
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"[VOICE] ERROR: {ex.Message}");
+        }
+    });
+}
+
+// Pattern 2: Toggle state
+// -----------------------
+private static void ToggleSomething()
+{
+    Application.Current.Dispatcher.Invoke(() =>
+    {
+        try
+        {
+            Debug.WriteLine("[VOICE] Toggling something");
+            
+            var window = Application.Current.Windows.OfType<MyWindow>().FirstOrDefault();
+            if (window != null)
+            {
+                window.SomeProperty = !window.SomeProperty;
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"[VOICE] ERROR: {ex.Message}");
+        }
+    });
+}
+
+// Pattern 3: Execute action on active window
+// ------------------------------------------
+private static void DoSomethingOnActiveWindow()
+{
+    Application.Current.Dispatcher.Invoke(() =>
+    {
+        try
+        {
+            Debug.WriteLine("[VOICE] Executing on active window");
+            
+            var activeWindow = Application.Current.Windows
+                .OfType<Window>()
+                .FirstOrDefault(w => w.IsActive);
+                
+            if (activeWindow != null)
+            {
+                // Perform action on active window
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"[VOICE] ERROR: {ex.Message}");
+        }
+    });
+}
+
+// Pattern 4: Show dialog or message
+// ---------------------------------
+private static void ShowCustomDialog()
+{
+    Application.Current.Dispatcher.Invoke(() =>
+    {
+        try
+        {
+            Debug.WriteLine("[VOICE] Showing custom dialog");
+            
+            var dialog = new MyDialog();
+            dialog.ShowDialog();
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"[VOICE] ERROR: {ex.Message}");
+        }
+    });
+}
+
+// Pattern 5: Trigger event or callback
+// ------------------------------------
+private static void TriggerEvent()
+{
+    Application.Current.Dispatcher.Invoke(() =>
+    {
+        try
+        {
+            Debug.WriteLine("[VOICE] Triggering event");
+            
+            var homeWindow = Application.Current.Windows.OfType<HomeWindow>().FirstOrDefault();
+            if (homeWindow != null)
+            {
+                // Trigger event or callback
+                // homeWindow.OnVoiceCommand?.Invoke("command_name");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"[VOICE] ERROR: {ex.Message}");
+        }
+    });
+}
+
+// ============================================================================
+// TESTING CHECKLIST
+// ============================================================================
+
+/*
+After adding your command:
+
+1. [ ] Rebuild the application (Ctrl+Shift+B)
+2. [ ] Run the application (F5)
+3. [ ] Say your command into the microphone
+4. [ ] Check Debug Output for:
+       [VOICE] Recognized: 'your command'
+       [VOICE] Processing command: 'your command'
+       [VOICE] Executing: Your Custom Action
+5. [ ] Verify the action executes correctly
+6. [ ] Test all aliases
+7. [ ] Test in different window contexts
+8. [ ] Test error handling (if applicable)
+
+Common Issues:
+- Command not recognized: Check spelling in switch statement
+- Action not executing: Check Debug Output for errors
+- Wrong window: Verify window type check
+- Null reference: Add null checks for windows/objects
+*/
+
+// ============================================================================
+// EXAMPLE: Complete Custom Command
+// ============================================================================
+
+// Example: Add "refresh" command to reload data
+
+// 1. Add to switch statement
+case "refresh":
+case "reload":
+case "update":
+    RefreshData();
+    break;
+
+// 2. Add action method
+/// <summary>
+/// Refresh/reload current data
+/// </summary>
+private static void RefreshData()
+{
+    Application.Current.Dispatcher.Invoke(() =>
+    {
+        try
+        {
+            Debug.WriteLine("[VOICE] Refreshing data");
+            
+            var homeWindow = Application.Current.Windows.OfType<HomeWindow>().FirstOrDefault();
+            if (homeWindow != null)
+            {
+                // Call refresh method on HomeWindow
+                // homeWindow.RefreshAllData();
+                
+                Debug.WriteLine("[VOICE] Data refreshed successfully");
+            }
+            else
+            {
+                Debug.WriteLine("[VOICE] HomeWindow not found - cannot refresh");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"[VOICE] ERROR refreshing data: {ex.Message}");
+        }
+    });
+}
+
+// 3. Test
+// Say "refresh" or "reload" or "update"
+// Check Debug Output for confirmation
+
+// ============================================================================
