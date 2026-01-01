@@ -1,0 +1,32 @@
+{
+    "navigation": {
+        "go home": "HOME",
+        "open dashboard": "DASHBOARD",
+        "show profile": "PROFILE",
+        "open settings": "SETTINGS",
+        "show games": "GAMES",
+        "voice commands": "VOICE_COMMANDS"
+    },
+    "gaming": {
+        "jump": "JUMP",
+        "move forward": "FORWARD",
+        "move backward": "BACKWARD",
+        "move left": "LEFT",
+        "move right": "RIGHT",
+        "attack": "ATTACK",
+        "defend": "DEFEND",
+        "pause game": "PAUSE",
+        "resume game": "RESUME",
+        "quit game": "QUIT"
+    },
+    "system": {
+        "start listening": "START_LISTEN",
+        "stop listening": "STOP_LISTEN",
+        "help": "HELP",
+        "repeat": "REPEAT",
+        "cancel": "CANCEL",
+        "confirm": "CONFIRM",
+        "yes": "YES",
+        "no": "NO"
+    }
+}
