@@ -1,0 +1,165 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <!-- ========================= CONVERTERS ========================= -->
+    <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+
+    <!-- ========================= COLORS (Static for DropShadowEffect compatibility) ========================= -->
+    <Color x:Key="PrimaryColor">#6366F1</Color>
+    <Color x:Key="SecondaryColor">#8B5CF6</Color>
+    <Color x:Key="AccentColor">#EC4899</Color>
+    
+    <!-- Static colors for effects (DropShadowEffect doesn't support DynamicResource) -->
+    <Color x:Key="PrimaryGlowColor">#6366F1</Color>
+    <Color x:Key="SecondaryGlowColor">#8B5CF6</Color>
+    <Color x:Key="AccentGlowColor">#EC4899</Color>
+    
+    <!-- Color Brushes for easier binding -->
+    <SolidColorBrush x:Key="PrimaryColorBrush" Color="{StaticResource PrimaryColor}"/>
+    <SolidColorBrush x:Key="SecondaryColorBrush" Color="{StaticResource SecondaryColor}"/>
+    <SolidColorBrush x:Key="AccentColorBrush" Color="{StaticResource AccentColor}"/>
+
+    <!-- ========================= BRUSHES (Dynamic - will be updated by ThemeManager) ========================= -->
+    <SolidColorBrush x:Key="BackgroundDarkBrush" Color="#F8F9FA"/>
+    <SolidColorBrush x:Key="BackgroundMediumBrush" Color="White"/>
+    <SolidColorBrush x:Key="BackgroundLightBrush" Color="#F1F5F9"/>
+    
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#1E293B"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#475569"/>
+    <SolidColorBrush x:Key="TextTertiaryBrush" Color="#94A3B8"/>
+
+    <!-- Glass Theme (Dynamic) -->
+    <SolidColorBrush x:Key="GlassBackgroundBrush" Color="#E8FFFFFF"/>
+    <SolidColorBrush x:Key="GlassBorderBrush" Color="#C0FFFFFF"/>
+    <SolidColorBrush x:Key="SurfaceGlassBrush" Color="#F0FFFFFF"/>
+    
+    <!-- Card Backgrounds (Dynamic) -->
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="CardHoverBackgroundBrush" Color="#F8F9FA"/>
+
+    <!-- Gradients -->
+    <LinearGradientBrush x:Key="PrimaryGradientBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{DynamicResource PrimaryColor}" Offset="0"/>
+        <GradientStop Color="{DynamicResource SecondaryColor}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- ========================= FONT SIZES ========================= -->
+    <System:Double x:Key="DisplayFontSize">28</System:Double>
+    <System:Double x:Key="TitleFontSize">20</System:Double>
+    <System:Double x:Key="BodyFontSize">14</System:Double>
+
+    <!-- ========================= FONT WEIGHTS ========================= -->
+    <FontWeight x:Key="HeadingFontWeight">Bold</FontWeight>
+    <FontWeight x:Key="TitleFontWeight">SemiBold</FontWeight>
+
+    <!-- ========================= ANIMATION ========================= -->
+    <CubicEase x:Key="EaseInOutCubic" EasingMode="EaseInOut"/>
+
+    <!-- ========================= NAV BUTTON (Original) ========================= -->
+    <Style x:Key="NavigationButton" TargetType="Button">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}"
+                            CornerRadius="12" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#33FFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#66FFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!-- =============================================================
+    │                  NEW STYLES YOU NEED (FIXED)
+    ===============================================================-->
+
+    <!-- ========================= PURPLE → CYAN MODERN GRADIENT ========================= -->
+    <LinearGradientBrush x:Key="PurpleCyanGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#7F4CFF" Offset="0"/>
+        <GradientStop Color="#3CD6FF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- ========================= GLASS CARD ========================= -->
+    <Style x:Key="GlassCard" TargetType="Border">
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Background" Value="{StaticResource GlassBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource GlassBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1.3"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="30" ShadowDepth="0" Color="#88000000"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ========================= GLASS BUTTON ========================= -->
+    <Style x:Key="GlassButton" TargetType="Button">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource GlassBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource GlassBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1.2"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="12 6"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="18">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ========================= STAT CARD ========================= -->
+    <Style x:Key="StatCard" TargetType="Border" BasedOn="{StaticResource GlassCard}">
+        <Setter Property="Padding" Value="15"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <!-- ========================= MAIN GRADIENT BUTTON ========================= -->
+    <Style x:Key="PrimaryGradientButton" TargetType="Button">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="10 6"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryGradientBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="18">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
