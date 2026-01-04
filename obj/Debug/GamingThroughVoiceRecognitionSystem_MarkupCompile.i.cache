@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\Abdullah\GamingThroughVoiceRecognitionSystem\obj\Debug\
+F:\Sabeeh FYP\Gaming-Through-Voice-Recognition-System-main\obj\Debug\
 GamingThroughVoiceRecognitionSystem
 none
 false
 DEBUG;TRACE
-F:\Abdullah\GamingThroughVoiceRecognitionSystem\App.xaml
-16-1977264006
+F:\Sabeeh FYP\Gaming-Through-Voice-Recognition-System-main\App.xaml
+15438957957
 
-33753889410
-291312914201
-Resources\Styles.xaml;Views\DashboardControl.xaml;Views\VoiceCommandsControl.xaml;Views\SettingsControl.xaml;Views\GlassMessageBox.xaml;Views\HomeWindow.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\SignUpWindow.xaml;Views\UserProfile.xaml;Views\FaceCaptureWindow.xaml;Views\VoiceRecordingWindow.xaml;Views\FaceRegistrationWindow.xaml;Views\AddGameWindow.xaml;Views\EditProfileWindow.xaml;Views\ForgotPasswordWindow.xaml;
+291092916984
+29895539117
+Resources\Styles.xaml;Views\DashboardControl.xaml;Views\SettingsControl.xaml;Views\GlassMessageBox.xaml;Views\HomeWindow.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\SignUpWindow.xaml;Views\UserProfile.xaml;Views\FaceCaptureWindow.xaml;Views\VoiceRecordingWindow.xaml;Views\FaceRegistrationWindow.xaml;Views\AddGameWindow.xaml;Views\EditProfileWindow.xaml;Views\ForgotPasswordWindow.xaml;
 
-False
+True
 

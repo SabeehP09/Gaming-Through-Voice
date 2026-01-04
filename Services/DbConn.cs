@@ -743,7 +743,7 @@ namespace GamingThroughVoiceRecognitionSystem.Database
             try
             {
                 OpenConnection();
-                string query = @"SELECT ControlID, GameID, UserID, ActionName, VoiceCommand, KeyBinding 
+                string query = @"SELECT ControlID, GameID, UserID, ActionName, KeyBinding 
                                 FROM game_controls 
                                 WHERE GameID = @GameID AND UserID = @UserID";
 
@@ -761,8 +761,7 @@ namespace GamingThroughVoiceRecognitionSystem.Database
                                 GameId = dr.GetInt32(1),
                                 UserId = dr.GetInt32(2),
                                 ActionName = dr.GetString(3),
-                                VoiceCommand = dr.GetString(4),
-                                KeyBinding = dr.GetString(5)
+                                KeyBinding = dr.GetString(4)
                             });
                         }
                     }
@@ -781,15 +780,14 @@ namespace GamingThroughVoiceRecognitionSystem.Database
             try
             {
                 OpenConnection();
-                string query = @"INSERT INTO game_controls (GameID, UserID, ActionName, VoiceCommand, KeyBinding)
-                                VALUES (@GameID, @UserID, @ActionName, @VoiceCommand, @KeyBinding)";
+                string query = @"INSERT INTO game_controls (GameID, UserID, ActionName, KeyBinding)
+                                VALUES (@GameID, @UserID, @ActionName, @KeyBinding)";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@GameID", control.GameId);
                     cmd.Parameters.AddWithValue("@UserID", control.UserId);
                     cmd.Parameters.AddWithValue("@ActionName", control.ActionName);
-                    cmd.Parameters.AddWithValue("@VoiceCommand", control.VoiceCommand);
                     cmd.Parameters.AddWithValue("@KeyBinding", control.KeyBinding);
 
                     return cmd.ExecuteNonQuery() > 0;
@@ -808,13 +806,12 @@ namespace GamingThroughVoiceRecognitionSystem.Database
             {
                 OpenConnection();
                 string query = @"UPDATE game_controls 
-                                SET ActionName = @ActionName, VoiceCommand = @VoiceCommand, KeyBinding = @KeyBinding
+                                SET ActionName = @ActionName, KeyBinding = @KeyBinding
                                 WHERE ControlID = @ControlID AND UserID = @UserID";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@ActionName", control.ActionName);
-                    cmd.Parameters.AddWithValue("@VoiceCommand", control.VoiceCommand);
                     cmd.Parameters.AddWithValue("@KeyBinding", control.KeyBinding);
                     cmd.Parameters.AddWithValue("@ControlID", control.ControlId);
                     cmd.Parameters.AddWithValue("@UserID", control.UserId);
@@ -860,7 +857,9 @@ namespace GamingThroughVoiceRecognitionSystem.Database
             try
             {
                 OpenConnection();
-                string query = @"SELECT * FROM user_settings WHERE UserID = @UserID";
+                string query = @"SELECT SettingID, UserID, Theme, VoiceRecognitionEnabled, FaceRecognitionEnabled, 
+                                        MicrophoneSensitivity, AutoLaunchGames, ShowNotifications, Language, UpdatedAt 
+                                FROM user_settings WHERE UserID = @UserID";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -877,10 +876,10 @@ namespace GamingThroughVoiceRecognitionSystem.Database
                                 VoiceRecognitionEnabled = dr.IsDBNull(3) ? true : dr.GetBoolean(3),
                                 FaceRecognitionEnabled = dr.IsDBNull(4) ? false : dr.GetBoolean(4),
                                 MicrophoneSensitivity = dr.IsDBNull(5) ? 50 : dr.GetInt32(5),
-                                VoiceCommandTimeout = dr.IsDBNull(6) ? 5 : dr.GetInt32(6),
-                                AutoLaunchGames = dr.IsDBNull(7) ? false : dr.GetBoolean(7),
-                                ShowNotifications = dr.IsDBNull(8) ? true : dr.GetBoolean(8),
-                                Language = dr.IsDBNull(9) ? "English" : dr.GetString(9)
+                                AutoLaunchGames = dr.IsDBNull(6) ? false : dr.GetBoolean(6),
+                                ShowNotifications = dr.IsDBNull(7) ? true : dr.GetBoolean(7),
+                                Language = dr.IsDBNull(8) ? "English" : dr.GetString(8),
+                                UpdatedAt = dr.IsDBNull(9) ? DateTime.Now : dr.GetDateTime(9)
                             };
                         }
                     }
@@ -924,7 +923,6 @@ namespace GamingThroughVoiceRecognitionSystem.Database
                                     VoiceRecognitionEnabled = @VoiceRecognitionEnabled,
                                     FaceRecognitionEnabled = @FaceRecognitionEnabled,
                                     MicrophoneSensitivity = @MicrophoneSensitivity,
-                                    VoiceCommandTimeout = @VoiceCommandTimeout,
                                     AutoLaunchGames = @AutoLaunchGames,
                                     ShowNotifications = @ShowNotifications,
                                     Language = @Language,
@@ -937,7 +935,6 @@ namespace GamingThroughVoiceRecognitionSystem.Database
                     cmd.Parameters.AddWithValue("@VoiceRecognitionEnabled", settings.VoiceRecognitionEnabled);
                     cmd.Parameters.AddWithValue("@FaceRecognitionEnabled", settings.FaceRecognitionEnabled);
                     cmd.Parameters.AddWithValue("@MicrophoneSensitivity", settings.MicrophoneSensitivity);
-                    cmd.Parameters.AddWithValue("@VoiceCommandTimeout", settings.VoiceCommandTimeout);
                     cmd.Parameters.AddWithValue("@AutoLaunchGames", settings.AutoLaunchGames);
                     cmd.Parameters.AddWithValue("@ShowNotifications", settings.ShowNotifications);
                     cmd.Parameters.AddWithValue("@Language", settings.Language);
@@ -950,48 +947,6 @@ namespace GamingThroughVoiceRecognitionSystem.Database
             {
                 CloseConnection();
             }
-        }
-
-        #endregion
-
-        #region System Voice Commands Management
-        
-        // Get all system voice commands
-        public List<SystemVoiceCommand> GetSystemVoiceCommands()
-        {
-            var commands = new List<SystemVoiceCommand>();
-            try
-            {
-                OpenConnection();
-                string query = @"SELECT CommandID, CommandName, VoiceCommand, Action, Target, IsEnabled 
-                                FROM system_voice_commands 
-                                WHERE IsEnabled = 1
-                                ORDER BY CommandName";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            commands.Add(new SystemVoiceCommand
-                            {
-                                CommandID = dr.GetInt32(0),
-                                CommandName = dr.GetString(1),
-                                VoiceCommand = dr.GetString(2),
-                                Action = dr.GetString(3),
-                                Target = dr.IsDBNull(4) ? null : dr.GetString(4),
-                                IsEnabled = dr.GetBoolean(5)
-                            });
-                        }
-                    }
-                }
-            }
-            finally
-            {
-                CloseConnection();
-            }
-            return commands;
         }
 
         #endregion

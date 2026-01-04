@@ -61,16 +61,16 @@ namespace GamingThroughVoiceRecognitionSystem.Views
                     GamesPlayedText.Text = gamesPlayedData.Rows[0][0].ToString();
                 }
 
-                // Voice Commands - Count from voice history
-                var voiceCommandsData = db.GetData(
-                    "SELECT COUNT(*) FROM user_voice_history WHERE UserID = @UserID",
+                // Authentication History - Count from authentication logs
+                var authData = db.GetData(
+                    "SELECT COUNT(*) FROM user_authentication_log WHERE UserID = @UserID",
                     new System.Data.SqlClient.SqlParameter[] {
                         new System.Data.SqlClient.SqlParameter("@UserID", _userId)
                     });
 
-                if (voiceCommandsData.Rows.Count > 0)
+                if (authData.Rows.Count > 0)
                 {
-                    VoiceCommandsText.Text = voiceCommandsData.Rows[0][0].ToString();
+                    VoiceCommandsText.Text = authData.Rows[0][0].ToString();
                 }
 
                 // Total Playtime - Sum duration from game history

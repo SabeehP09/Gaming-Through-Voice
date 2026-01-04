@@ -66,10 +66,7 @@ namespace GamingThroughVoiceRecognitionSystem.Views
             MainContentArea.Content = new DashboardControl(currentUser, db);
         }
 
-        public void NavigateToVoiceCommands()
-        {
-            MainContentArea.Content = new VoiceCommandsControl(currentUser, db);
-        }
+
 
         public void NavigateToProfile()
         {
@@ -88,10 +85,7 @@ namespace GamingThroughVoiceRecognitionSystem.Views
             NavigateToHome();
         }
 
-        private void VoiceCommandsButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigateToVoiceCommands();
-        }
+
 
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
         {

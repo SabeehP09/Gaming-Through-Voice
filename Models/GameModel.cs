@@ -23,27 +23,8 @@ namespace GamingThroughVoiceRecognitionSystem.Models
         public int GameId { get; set; }
         public int UserId { get; set; }
         public string ActionName { get; set; }
-        public string VoiceCommand { get; set; }
         public string KeyBinding { get; set; }
     }
 
-    public class GameVoiceCommand
-    {
-        public int CommandId { get; set; }
-        public int GameId { get; set; }
-        public string VoiceCommand { get; set; }
-        public string KeyBinding { get; set; }
-        public bool IsEnabled { get; set; }
-        public DateTime CreatedDate { get; set; }
-    }
 
-    public class GameVoiceConfig
-    {
-        public int GameId { get; set; }
-        public string GameName { get; set; }
-        public bool VoiceControlEnabled { get; set; }
-        public string GrammarFile { get; set; }
-        public string DictionaryFile { get; set; }
-        public List<GameVoiceCommand> Commands { get; set; }
-    }
 }

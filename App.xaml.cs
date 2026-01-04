@@ -24,38 +24,11 @@ namespace GamingThroughVoiceRecognitionSystem
                 // Initialize theme on app startup
                 ThemeManager.Initialize();
                 
-                // Initialize VOSK voice recognition system
-                Debug.WriteLine("[APP] Initializing VOSK voice recognition system...");
-                
-                // Initialize VoiceListenerManager
-                VoiceListenerManager.Initialize();
-                
-                // Start VoiceListener.exe process
-                bool voiceStarted = VoiceListenerManager.StartVoiceListener();
-                if (voiceStarted)
-                {
-                    Debug.WriteLine("[APP] VOSK voice listener started successfully");
-                }
-                else
-                {
-                    Debug.WriteLine("[APP] WARNING: VOSK voice listener failed to start - voice commands will not work");
-                    Debug.WriteLine("[APP] Application will continue without voice recognition");
-                }
-                
-                // Initialize GlobalVoiceCommandHandler
-                GlobalVoiceCommandHandler.Initialize();
-                
-                // TEMPORARY: Enable voice commands for testing (remove this after adding login integration)
-                // TODO: Remove this line and set IsUserLoggedIn = true in your login success code
-                GlobalVoiceCommandHandler.IsUserLoggedIn = true;
-                Debug.WriteLine("[APP] TEMPORARY: Voice commands enabled for testing");
-                
-                Debug.WriteLine("[APP] VOSK voice recognition system initialized");
+                Debug.WriteLine("[APP] Application initialized successfully");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"[APP] ERROR during VOSK initialization: {ex.Message}");
-                Debug.WriteLine("[APP] Application will continue without voice recognition");
+                Debug.WriteLine($"[APP] ERROR during initialization: {ex.Message}");
             }
         }
 
@@ -64,16 +37,11 @@ namespace GamingThroughVoiceRecognitionSystem
             try
             {
                 Debug.WriteLine("[APP] Application shutting down...");
-                
-                // Cleanup VOSK voice recognition system
-                GlobalVoiceCommandHandler.Cleanup();
-                VoiceListenerManager.Cleanup();
-                
-                Debug.WriteLine("[APP] VOSK cleanup completed");
+                Debug.WriteLine("[APP] Cleanup completed");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"[APP] ERROR during VOSK cleanup: {ex.Message}");
+                Debug.WriteLine($"[APP] ERROR during cleanup: {ex.Message}");
             }
             
             base.OnExit(e);

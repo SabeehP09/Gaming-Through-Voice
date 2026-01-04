@@ -150,7 +150,6 @@ namespace GamingThroughVoiceRecognitionSystem.Views
                 GameId = editingGame?.GameId ?? 0,
                 UserId = currentUser.UserId,
                 ActionName = "",
-                VoiceCommand = "",
                 KeyBinding = ""
             });
         }

@@ -18,7 +18,6 @@ namespace GamingThroughVoiceRecognitionSystem.Views
 
         // UI Controls (we'll reference them by name from XAML)
         private Slider voiceSensitivitySlider;
-        private CheckBox enableVoiceCommandsCheckBox;
         private CheckBox noiseCancellationCheckBox;
         private CheckBox voiceFeedbackCheckBox;
         private Slider masterVolumeSlider;
@@ -52,7 +51,6 @@ namespace GamingThroughVoiceRecognitionSystem.Views
         {
             // Find all controls by traversing the visual tree
             voiceSensitivitySlider = FindName("VoiceSensitivitySlider") as Slider;
-            enableVoiceCommandsCheckBox = FindName("EnableVoiceCommandsCheckBox") as CheckBox;
             noiseCancellationCheckBox = FindName("NoiseCancellationCheckBox") as CheckBox;
             voiceFeedbackCheckBox = FindName("VoiceFeedbackCheckBox") as CheckBox;
             masterVolumeSlider = FindName("MasterVolumeSlider") as Slider;
@@ -84,9 +82,6 @@ namespace GamingThroughVoiceRecognitionSystem.Views
                 // Apply settings to UI
                 if (voiceSensitivitySlider != null)
                     voiceSensitivitySlider.Value = currentSettings.MicrophoneSensitivity;
-
-                if (enableVoiceCommandsCheckBox != null)
-                    enableVoiceCommandsCheckBox.IsChecked = currentSettings.VoiceRecognitionEnabled;
 
                 // Set theme
                 bool isDark = currentSettings.Theme == "Dark";
@@ -155,9 +150,6 @@ namespace GamingThroughVoiceRecognitionSystem.Views
                 // Update settings from UI
                 if (voiceSensitivitySlider != null)
                     currentSettings.MicrophoneSensitivity = (int)voiceSensitivitySlider.Value;
-
-                if (enableVoiceCommandsCheckBox != null)
-                    currentSettings.VoiceRecognitionEnabled = enableVoiceCommandsCheckBox.IsChecked ?? true;
 
                 // Ensure theme is set correctly for this user
                 currentSettings.Theme = ThemeManager.CurrentTheme == AppTheme.Dark ? "Dark" : "Light";

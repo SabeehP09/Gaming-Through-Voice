@@ -56,8 +56,8 @@ namespace GamingThroughVoiceRecognitionSystem.Views
 
             try
             {
-                var voiceCommandsData = db.GetData($"SELECT COUNT(*) FROM user_voice_history WHERE UserID={currentUser.UserId}", null);
-                VoiceCommandsCard.Text = voiceCommandsData.Rows.Count > 0 ? voiceCommandsData.Rows[0][0].ToString() : "0";
+                var authData = db.GetData($"SELECT COUNT(*) FROM user_authentication_log WHERE UserID={currentUser.UserId}", null);
+                VoiceCommandsCard.Text = authData.Rows.Count > 0 ? authData.Rows[0][0].ToString() : "0";
             }
             catch
             {
@@ -111,94 +111,6 @@ namespace GamingThroughVoiceRecognitionSystem.Views
         }
 
         /// <summary>
-        /// Launch a game by name (for voice commands)
-        /// </summary>
-        /// <param name="gameName">The name of the game to launch</param>
-        public void LaunchGameByName(string gameName)
-        {
-            try
-            {
-                Debug.WriteLine($"[DASHBOARD] Attempting to launch game by name: {gameName}");
-                
-                // Find the game in the current games list
-                var games = GamesGrid.ItemsSource as List<GameViewModel>;
-                if (games == null)
-                {
-                    Debug.WriteLine("[DASHBOARD] No games loaded");
-                    GlassMessageBox.Show("No games available. Please add games first.");
-                    return;
-                }
-
-                // Try exact match first, then partial match
-                var game = games.FirstOrDefault(g => 
-                    g.GameName.Equals(gameName, StringComparison.OrdinalIgnoreCase));
-                
-                // If not found, try partial match (e.g., "Mr Racer" matches "Mr Racer (Voice Controlled)")
-                if (game == null)
-                {
-                    game = games.FirstOrDefault(g => 
-                        g.GameName.IndexOf(gameName, StringComparison.OrdinalIgnoreCase) >= 0);
-                }
-
-                if (game != null)
-                {
-                    Debug.WriteLine($"[DASHBOARD] Found game: {game.GameName}");
-                    LaunchGame(game);
-                }
-                else
-                {
-                    Debug.WriteLine($"[DASHBOARD] Game not found: {gameName}");
-                    GlassMessageBox.Show($"Game '{gameName}' not found. Please add it first.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[DASHBOARD] ERROR launching game by name: {ex.Message}");
-                GlassMessageBox.Show($"Failed to launch game: {ex.Message}");
-            }
-        }
-
-        /// <summary>
-        /// Launch a game by its position number (for voice commands like "open game 1")
-        /// </summary>
-        /// <param name="gameNumber">The game number (1-based index)</param>
-        public void LaunchGameByNumber(int gameNumber)
-        {
-            try
-            {
-                Debug.WriteLine($"[DASHBOARD] Attempting to launch game #{gameNumber}");
-                
-                // Find the game in the current games list
-                var games = GamesGrid.ItemsSource as List<GameViewModel>;
-                if (games == null || games.Count == 0)
-                {
-                    Debug.WriteLine("[DASHBOARD] No games loaded");
-                    GlassMessageBox.Show("No games available. Please add games first.");
-                    return;
-                }
-
-                // Convert to 0-based index
-                int index = gameNumber - 1;
-                
-                if (index < 0 || index >= games.Count)
-                {
-                    Debug.WriteLine($"[DASHBOARD] Game #{gameNumber} not found (only {games.Count} games available)");
-                    GlassMessageBox.Show($"Game #{gameNumber} not found. You have {games.Count} game(s).");
-                    return;
-                }
-
-                var game = games[index];
-                Debug.WriteLine($"[DASHBOARD] Found game #{gameNumber}: {game.GameName}");
-                LaunchGame(game);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[DASHBOARD] ERROR launching game by number: {ex.Message}");
-                GlassMessageBox.Show($"Failed to launch game: {ex.Message}");
-            }
-        }
-
-        /// <summary>
         /// Launch a game
         /// </summary>
         /// <param name="game">The game to launch</param>
@@ -207,37 +119,6 @@ namespace GamingThroughVoiceRecognitionSystem.Views
             try
             {
                 Debug.WriteLine($"[DASHBOARD] Launching game: {game.GameName} (ID: {game.GameId})");
-
-                // Check if this is a voice-controlled game
-                if (game.GameName.IndexOf("Voice Controlled", StringComparison.OrdinalIgnoreCase) >= 0 || 
-                    game.GameName.IndexOf("Mr Racer", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    game.GameName.IndexOf("Subway Surfers", StringComparison.OrdinalIgnoreCase) >= 0)
-                {
-                    Debug.WriteLine($"[DASHBOARD] Launching voice-controlled game: {game.GameName}");
-                    var voiceGameController = new VoiceGameController(game.GameName);
-                    
-                    if (!voiceGameController.CheckDependencies())
-                    {
-                        GlassMessageBox.ShowError("❌ Python not found\n\nPlease install Python 3.8+ to play voice-controlled games.");
-                        return;
-                    }
-                    
-                    bool launched = voiceGameController.LaunchVoiceGame(autoLaunch: true);
-                    if (launched)
-                    {
-                        GlassMessageBox.ShowSuccess(
-                            $"🎮 {game.GameName} Launching...\n\n" +
-                            "🎤 Voice control ready for gameplay\n" +
-                            "📢 App voice control is paused\n" +
-                            "✅ Will auto-resume when you exit the game", 
-                            autoDismiss: true);
-                    }
-                    else
-                    {
-                        GlassMessageBox.ShowError("❌ Failed to start voice controller\n\nCheck that Python and dependencies are installed.");
-                    }
-                    return;
-                }
 
                 // Regular game launch
                 if (string.IsNullOrEmpty(game.FilePath) || !File.Exists(game.FilePath))

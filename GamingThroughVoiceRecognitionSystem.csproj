@@ -106,9 +106,6 @@
     <Compile Include="Services\FaceRecognitionService_OpenCV.cs" />
     <Compile Include="Services\VoiceRecognitionService.cs" />
     <Compile Include="Services\VoiceApiClient.cs" />
-    <Compile Include="Services\VoiceListenerManager.cs" />
-    <Compile Include="Services\GlobalVoiceCommandHandler.cs" />
-    <Compile Include="Services\VoiceGameController.cs" />
     <Compile Include="Views\AddGameWindow.xaml.cs">
       <DependentUpon>AddGameWindow.xaml</DependentUpon>
     </Compile>
@@ -152,9 +149,7 @@
     <Compile Include="Views\DashboardControl.xaml.cs">
       <DependentUpon>DashboardControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\VoiceCommandsControl.xaml.cs">
-      <DependentUpon>VoiceCommandsControl.xaml</DependentUpon>
-    </Compile>
+
     <Compile Include="Views\SettingsControl.xaml.cs">
       <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
@@ -166,10 +161,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\VoiceCommandsControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+
     <Page Include="Views\SettingsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -257,35 +249,6 @@
     <Resource Include="Views\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <!-- VOSK Voice Recognition Files -->
-    <None Include="vosk\VoiceListenerApp\VoiceListener.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="vosk\VoiceListenerApp\voice_listener.py">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="vosk\VoiceListenerApp\voice_listener.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <!-- English India Model -->
-    <None Include="vosk\vosk-model-small-en-in-0.4\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <!-- Keep old model for backward compatibility (optional) -->
-    <None Include="vosk\vosk-model-small-en-us-0.15\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <!-- Voice Game Files -->
-    <None Include="Games\VoiceGame\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <!-- Subway Surfers Voice Game Files (new version in "subway game" folder) -->
-    <None Include="Games\subway game\voice_launcher.py" Condition="Exists('Games\subway game\voice_launcher.py')">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Games\subway game\vosk-model-small-en-us-0.15\**\*" Condition="Exists('Games\subway game\vosk-model-small-en-us-0.15')">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

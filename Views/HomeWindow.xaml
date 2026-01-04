@@ -154,12 +154,7 @@
                             </StackPanel>
                         </Button>
 
-                        <Button x:Name="VoiceCommandsButton" Style="{StaticResource GlassyButton}" Margin="0,0,0,8" Height="40" Click="VoiceCommandsButton_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="🎤" Margin="0,0,12,0"/>
-                                <TextBlock Text="Voice Commands"/>
-                            </StackPanel>
-                        </Button>
+
 
                         <Button x:Name="ProfileButton" Style="{StaticResource GlassyButton}" Margin="0,0,0,8" Height="40" Click="ProfileButton_Click">
                             <StackPanel Orientation="Horizontal">
