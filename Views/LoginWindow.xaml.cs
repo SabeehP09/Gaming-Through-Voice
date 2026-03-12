@@ -163,6 +163,7 @@ namespace GamingThroughVoiceRecognitionSystem.Views
                     HomeWindow homeWindow = new HomeWindow(userId);
                     homeWindow.Show();
                     this.Close();
+                    GlobalVoiceCommandHandler.IsUserLoggedIn = true;
                 }
                 else
                 {
@@ -250,6 +251,7 @@ namespace GamingThroughVoiceRecognitionSystem.Views
                             HomeWindow homeWindow = new HomeWindow(userId);
                             homeWindow.Show();
                             this.Close();
+                            GlobalVoiceCommandHandler.IsUserLoggedIn = true;
                         }
                         else if (identified)
                         {
@@ -294,6 +296,7 @@ namespace GamingThroughVoiceRecognitionSystem.Views
                 HomeWindow homeWindow = new HomeWindow(userId);
                 homeWindow.Show();
                 this.Close();
+                GlobalVoiceCommandHandler.IsUserLoggedIn = true;
             }
             else
             {
