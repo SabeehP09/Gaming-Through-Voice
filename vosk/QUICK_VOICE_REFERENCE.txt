@@ -1,0 +1,88 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                    VOICE COMMANDS QUICK REFERENCE                 ║
+╚══════════════════════════════════════════════════════════════════╝
+
+🎤 LOGIN WINDOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  "record voice"      → Open voice recording for login
+  "face login"        → Open face capture for login
+  "manual login"      → Submit email/password login
+  "forgot password"   → Open password reset
+
+📝 SIGNUP WINDOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  "record voice"      → Open voice recording for signup
+  "capture face"      → Open face capture for signup
+  "signup"            → Complete registration
+
+🎙️ VOICE RECORDING WINDOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  "start recording"   → Start recording voice
+  "stop recording"    → Stop recording voice
+  "done"              → Close recording window
+
+🎮 HOME WINDOW (Dashboard)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  "add game"          → Open Add Game dialog ✨ NEW!
+  "dashboard"         → Go to dashboard
+  "profile"           → Go to profile
+  "settings"          → Go to settings
+  "voice commands"    → Show voice commands help
+
+⚙️ HOME WINDOW (Settings)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  "change theme"      → Toggle Light/Dark theme ✨ NEW!
+  "toggle theme"      → Toggle Light/Dark theme ✨ NEW!
+
+🌐 GLOBAL COMMANDS (Work anywhere)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  "login"             → Go to login window
+  "signup"            → Go to signup window
+  "go home"           → Go to home/dashboard
+  "logout"            → Logout and return to login
+  "close window"      → Close current window
+  "minimize"          → Minimize window
+  "maximize"          → Maximize/restore window
+  "exit"              → Exit application
+
+╔══════════════════════════════════════════════════════════════════╗
+║                         VOICE FLOW EXAMPLES                       ║
+╚══════════════════════════════════════════════════════════════════╝
+
+📌 VOICE LOGIN FLOW:
+   1. Say "login"
+   2. Say "record voice"
+   3. Say "start recording"
+   4. Speak clearly
+   5. Say "stop recording"
+   → Authenticated!
+
+📌 VOICE SIGNUP FLOW:
+   1. Say "signup"
+   2. Fill in form fields
+   3. Say "record voice"
+   4. Say "start recording"
+   5. Speak clearly
+   6. Say "stop recording"
+   7. Say "signup"
+   → Account created!
+
+📌 ADD GAME FLOW:
+   1. Say "go home"
+   2. Say "add game"
+   → Add Game dialog opens!
+
+📌 CHANGE THEME FLOW:
+   1. Say "settings"
+   2. Say "change theme"
+   → Theme toggled!
+
+╔══════════════════════════════════════════════════════════════════╗
+║                            REBUILD STEPS                          ║
+╚══════════════════════════════════════════════════════════════════╝
+
+1. Press Ctrl+Shift+B (Rebuild Solution)
+2. Run the application
+3. Test the new voice commands!
+
+✨ All features now working with voice control! ✨
