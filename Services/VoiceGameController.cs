@@ -27,27 +27,39 @@ namespace GamingThroughVoiceRecognitionSystem.Services
         public VoiceGameController(string gameName = "Mr Racer")
         {
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            
-            // Configure paths based on game
+            // Project root: go up from bin\Debug
+            string projectRoot = Path.GetFullPath(Path.Combine(baseDir, "..", ".."));
+
             if (gameName.IndexOf("Subway Surfers", StringComparison.OrdinalIgnoreCase) >= 0 ||
                 gameName.IndexOf("Subway", StringComparison.OrdinalIgnoreCase) >= 0)
             {
-                // For Subway Surfers, use the source directory (not output directory)
-                // Go up from bin\Debug to project root, then to Games/subway game
-                string projectRoot = Path.GetFullPath(Path.Combine(baseDir, "..", ".."));
                 voiceGamePath = Path.Combine(projectRoot, "Games", "subway game");
                 pythonScript = Path.Combine(voiceGamePath, "voice_launcher.py");
-                gameWindowTitle = "Subway Surf";  // Partial match for "Subway Surfers"
-                
-                Debug.WriteLine($"[VoiceGame] Subway Surfers path: {voiceGamePath}");
-                Debug.WriteLine($"[VoiceGame] Python script: {pythonScript}");
+                gameWindowTitle = "Subway Surf";
+            }
+            else if (gameName.IndexOf("Chrome Dino", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                     gameName.IndexOf("Dino", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                voiceGamePath = Path.Combine(projectRoot, "Games", "Chrome-Dino-Runner-master");
+                pythonScript = Path.Combine(voiceGamePath, "chromedino.py");
+                gameWindowTitle = "Chrome Dino Runner";
+            }
+            else if (gameName.IndexOf("Pacman", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                     gameName.IndexOf("Pac-Man", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                voiceGamePath = Path.Combine(projectRoot, "Games", "Pacman-master");
+                pythonScript = Path.Combine(voiceGamePath, "pacman_voice.py");
+                gameWindowTitle = "Pacman";
             }
             else // Default to Mr Racer
             {
-                voiceGamePath = Path.Combine(baseDir, "Games", "VoiceGame", "VoiceGame");
+                voiceGamePath = Path.Combine(projectRoot, "Games", "VoiceGame", "VoiceGame");
                 pythonScript = Path.Combine(voiceGamePath, "voice_game_controller.py");
                 gameWindowTitle = "MR RACER";
             }
+
+            Debug.WriteLine($"[VoiceGame] Game: {gameName}");
+            Debug.WriteLine($"[VoiceGame] Script: {pythonScript}");
         }
 
         /// <summary>
@@ -78,10 +90,12 @@ namespace GamingThroughVoiceRecognitionSystem.Services
 
                 // Start Python voice controller (hidden window)
                 voiceControllerProcess = new Process();
-                voiceControllerProcess.StartInfo.FileName = "pythonw";  // Use pythonw to hide console
-                
-                // Use --auto-launch flag for both games when autoLaunch is true
-                if (autoLaunch)
+                // Chrome Dino and Pacman have voice built-in - show console so game window appears
+                bool isStandaloneGame = gameWindowTitle == "Chrome Dino Runner" || gameWindowTitle == "Pacman";
+                voiceControllerProcess.StartInfo.FileName = isStandaloneGame ? "python" : "pythonw";
+
+                // --auto-launch only applies to Mr Racer and Subway Surfers (external game + separate voice controller)
+                if (autoLaunch && !isStandaloneGame)
                 {
                     voiceControllerProcess.StartInfo.Arguments = $"\"{pythonScript}\" --auto-launch";
                     Debug.WriteLine("[VoiceGame] Auto-launch enabled - game will start immediately");
@@ -89,13 +103,13 @@ namespace GamingThroughVoiceRecognitionSystem.Services
                 else
                 {
                     voiceControllerProcess.StartInfo.Arguments = $"\"{pythonScript}\"";
-                    Debug.WriteLine("[VoiceGame] Starting voice controller");
+                    Debug.WriteLine("[VoiceGame] Starting voice game");
                 }
-                
+
+                voiceControllerProcess.StartInfo.CreateNoWindow = !isStandaloneGame;
                 voiceControllerProcess.StartInfo.WorkingDirectory = voiceGamePath;
                 voiceControllerProcess.StartInfo.UseShellExecute = false;
-                voiceControllerProcess.StartInfo.CreateNoWindow = true;  // Hide console window
-                voiceControllerProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                voiceControllerProcess.StartInfo.WindowStyle = isStandaloneGame ? ProcessWindowStyle.Normal : ProcessWindowStyle.Hidden;
                 voiceControllerProcess.StartInfo.RedirectStandardOutput = false;
                 voiceControllerProcess.StartInfo.RedirectStandardError = false;
 

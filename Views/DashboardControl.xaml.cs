@@ -211,7 +211,11 @@ namespace GamingThroughVoiceRecognitionSystem.Views
                 // Check if this is a voice-controlled game
                 if (game.GameName.IndexOf("Voice Controlled", StringComparison.OrdinalIgnoreCase) >= 0 || 
                     game.GameName.IndexOf("Mr Racer", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    game.GameName.IndexOf("Subway Surfers", StringComparison.OrdinalIgnoreCase) >= 0)
+                    game.GameName.IndexOf("Subway Surfers", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    game.GameName.IndexOf("Chrome Dino", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    game.GameName.IndexOf("Dino Runner", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    game.GameName.IndexOf("Pacman", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    game.GameName.IndexOf("Pac-Man", StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     Debug.WriteLine($"[DASHBOARD] Launching voice-controlled game: {game.GameName}");
                     var voiceGameController = new VoiceGameController(game.GameName);

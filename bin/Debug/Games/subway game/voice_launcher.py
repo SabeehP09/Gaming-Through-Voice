@@ -38,7 +38,10 @@ COMMANDS = [
     "left",
     "right",
     "pause",
+    "stop",
     "resume",
+    "home",
+    "settings",
     "quit game",
     "exit game",
     "close game"
@@ -54,7 +57,7 @@ START_COMMANDS = {"play", "start", "go", "run"}
 CLOSE_COMMANDS = {"quit game", "exit game", "close game"}
 
 # Confidence threshold
-CONFIDENCE_THRESHOLD = 0.60
+CONFIDENCE_THRESHOLD = 0.75
 
 def audio_callback(indata, frames, time_info, status):
     q.put(bytes(indata))
@@ -134,28 +137,28 @@ def swipe(direction):
     cy = window.top + window.height // 2
     
     # Swipe distance and duration
-    dist = 150
-    dur = 0.15
+    dist = 50
+    dur = 0
     
     if direction == "up":
         pyautogui.moveTo(cx, cy + dist)
         pyautogui.mouseDown()
-        pyautogui.moveTo(cx, cy - dist, duration=dur)
+        pyautogui.moveTo(cx, cy - dist, duration=0.3)
         pyautogui.mouseUp()
     elif direction == "down":
         pyautogui.moveTo(cx, cy - dist)
         pyautogui.mouseDown()
-        pyautogui.moveTo(cx, cy + dist, duration=dur)
+        pyautogui.moveTo(cx, cy + dist, duration=0.3)
         pyautogui.mouseUp()
     elif direction == "left":
         pyautogui.moveTo(cx + dist, cy)
         pyautogui.mouseDown()
-        pyautogui.moveTo(cx - dist, cy, duration=dur)
+        pyautogui.moveTo(cx - dist, cy, duration=0.3)
         pyautogui.mouseUp()
     elif direction == "right":
         pyautogui.moveTo(cx - dist, cy)
         pyautogui.mouseDown()
-        pyautogui.moveTo(cx + dist, cy, duration=dur)
+        pyautogui.moveTo(cx + dist, cy, duration=0.3)
         pyautogui.mouseUp()
 
 def execute_command(cmd):
@@ -164,7 +167,7 @@ def execute_command(cmd):
     
     # Prevent duplicate commands within 0.5 seconds
     current_time = time.time()
-    if cmd == last_command and (current_time - last_command_time) < 0.5:
+    if cmd == last_command and (current_time - last_command_time) < 0.2:
         return  # Skip duplicate
     last_command = cmd
     last_command_time = current_time
@@ -199,8 +202,8 @@ def execute_command(cmd):
         window = get_game_window()
         if window:
             # PLAY button is at bottom right of the window
-            play_x = window.left + window.width - 120
-            play_y = window.top + window.height - 60
+            play_x = window.left + window.width // 2 + 130
+            play_y = window.top + window.height - 50
             pyautogui.click(play_x, play_y)
         print("START_RUN")
         return
@@ -222,17 +225,45 @@ def execute_command(cmd):
         swipe("right")
         print("RIGHT")
     
-    elif cmd == "pause":
-        keyboard.press(Key.esc)
-        time.sleep(0.05)
-        keyboard.release(Key.esc)
+    elif cmd == "pause" or cmd == "stop":
+        # Click the pause button in top-left corner
+        window = get_game_window()
+        if window:
+            # Pause button is in top-left corner (adjusted position)
+            pause_x = window.left + 30
+            pause_y = window.top + 40
+            pyautogui.click(pause_x, pause_y)
         print("PAUSE")
     
     elif cmd == "resume":
-        keyboard.press(Key.enter)
-        time.sleep(0.05)
-        keyboard.release(Key.enter)
+        # Click the resume button (green button at bottom center-right)
+        window = get_game_window()
+        if window:
+            # Resume button is at bottom center-right of the window
+            resume_x = window.left + window.width // 2 + 100
+            resume_y = window.top + window.height - 60
+            pyautogui.click(resume_x, resume_y)
         print("RESUME")
+    
+    elif cmd == "home":
+        # Click the home button (house icon at bottom left)
+        window = get_game_window()
+        if window:
+            # Home button is at bottom left of the window
+            home_x = window.left + window.width // 2 - 130
+            home_y = window.top + window.height - 50
+            pyautogui.click(home_x, home_y)
+        print("HOME")
+    
+    elif cmd == "settings":
+        # Click the settings button (gear icon at bottom center)
+        window = get_game_window()
+        if window:
+            # Settings button is at bottom center of the window
+            settings_x = window.left + window.width // 2
+            settings_y = window.top + window.height - 60
+            pyautogui.click(settings_x, settings_y)
+        print("SETTINGS")
     
     else:
         print("NO_COMMAND")
@@ -276,26 +307,20 @@ def listen_for_commands():
     print("Close: 'quit game', 'exit game', 'close game'")
     print("Start: 'play', 'start', 'run', 'go'")
     print("Controls: 'jump', 'slide', 'left', 'right'")
-    print("Menu: 'pause', 'resume'")
+    print("Pause Menu: 'pause', 'stop', 'resume', 'home', 'settings'")
     print("=" * 55)
     print("NOTE: This game uses SWIPE gestures (not keyboard)")
     print("=" * 55)
     print("Listening...")
     
-    with sd.RawInputStream(samplerate=16000, blocksize=1600, dtype="int16", channels=1, callback=audio_callback):
+    with sd.RawInputStream(samplerate=16000, blocksize=400, dtype="int16", channels=1, callback=audio_callback):
         while True:
             data = q.get()
             if recognizer.AcceptWaveform(data):
                 result_json = recognizer.Result()
                 passed, text = check_confidence(result_json)
-                if passed and text:
+                if passed and text and text.strip():  # Ensure text is not empty
                     execute_command(text)
-            else:
-                partial = json.loads(recognizer.PartialResult())
-                partial_text = partial.get("partial", "").strip()
-                if partial_text in COMMANDS:
-                    execute_command(partial_text)
-                    recognizer.Reset()
 
 if __name__ == "__main__":
     import sys
