@@ -92,6 +92,9 @@ MODE_OPTIONS = {
 # Start button (appears after selecting a mode)
 START_BUTTON = (0.50, 0.85)         # Center bottom - START button
 
+# RACE button (career/challenge mode race selection screen - bottom right)
+RACE_BUTTON = (0.85, 0.92)          # RACE 🏁 button - bottom right
+
 # Settings page buttons
 SETTINGS_BUTTONS = {
     "close settings": (0.95, 0.07),
@@ -169,8 +172,8 @@ RESULT_SCREEN_BUTTONS = {
 
 # Gameplay commands list
 GAMEPLAY_COMMANDS = [
-    "pause", "horn", "left", "right", "brake", "straight", 
-    "accelerate", "gas", "release", "start race", "go", "race", "stop", 
+    "pause", "horn", "left", "right", "hard left", "hard right", "brake", "straight",
+    "accelerate", "release accelerate", "gas", "release", "start race", "go", "race", "stop",
     "pause game", "continue", "resume", "start", "play",
     "one way", "two way", "restart", "main menu", "yes", "no",
     "home", "replay"
@@ -270,6 +273,16 @@ class VoiceController:
         keyboard.release(key)
         print(f"  [STEER] {direction}")
 
+    def hard_steer(self, direction):
+        """Hard steer - press left or right 2 times rapidly"""
+        key = Key.left if direction == "left" else Key.right
+        print(f"  [HARD STEER] {direction} x2")
+        for i in range(2):
+            keyboard.press(key)
+            time.sleep(STEER_HOLD_DURATION)
+            keyboard.release(key)
+            time.sleep(0.05)  # Small gap between presses
+
     def start_acceleration(self):
         """Start holding acceleration key"""
         if not self.accelerating:
@@ -334,6 +347,8 @@ class VoiceController:
             if self.get_window():
                 self.game_active = True
                 print("  [OK] Launched!")
+                # Auto-hold accelerate when game starts
+                self.start_acceleration()
                 return
             time.sleep(1)
 
@@ -391,9 +406,11 @@ class VoiceController:
             self.click_at(MODE_OPTIONS[cmd])
             return True
         
-        # Start button (to start a race from mode selection)
+        # Start button (to start a race from mode selection) or RACE button
         if cmd in ["start", "play"]:
-            self.click_at(START_BUTTON)
+            self.click_at(RACE_BUTTON)
+            time.sleep(0.5)
+            self.start_acceleration()
             return True
         
         # Settings buttons
@@ -425,8 +442,10 @@ class VoiceController:
             self.click_at(GAMEPLAY_BUTTONS[cmd])
             return True
         
-        # START RACE - begin with acceleration held
+        # START RACE - click RACE button then hold acceleration
         if cmd in ["start race", "go", "race"]:
+            self.click_at(RACE_BUTTON)
+            time.sleep(0.5)
             self.start_acceleration()
             return True
         
@@ -503,14 +522,33 @@ class VoiceController:
             self.click_at(RESULT_SCREEN_BUTTONS["garage"])
             return True
         
+        # Hard steer - press 3 times
+        if cmd == "hard left" and self.in_gameplay:
+            self.hard_steer("left")
+            return True
+        if cmd == "hard right" and self.in_gameplay:
+            self.hard_steer("right")
+            return True
+
         # Gameplay keyboard controls - other actions (left, right, horn, camera)
         if cmd in GAMEPLAY_KEYS and cmd not in ["brake", "accelerate", "gas"]:
             self.press_key(GAMEPLAY_KEYS[cmd], cmd)
             return True
         
-        # Accelerate/gas - start acceleration if not already
-        if cmd in ["accelerate", "gas"]:
+        # Accelerate - hold Up Arrow until "release accelerate"
+        if cmd == "accelerate":
             self.start_acceleration()
+            return True
+
+        # Gas alias - same as accelerate
+        if cmd == "gas":
+            self.start_acceleration()
+            return True
+
+        # Release accelerate - let go of Up Arrow
+        if cmd == "release accelerate":
+            self.stop_acceleration()
+            print("  [ACCEL] Released by voice command")
             return True
         
         # Release steering / straight - no key needed, just stop pressing
@@ -560,8 +598,11 @@ class VoiceController:
         print("  close help")
         print("\nGAMEPLAY (keyboard controls):")
         print("  'go' / 'race' - START with auto-acceleration")
+        print("  'accelerate' - Hold Up Arrow (stays held)")
+        print("  'release accelerate' - Release Up Arrow")
         print("  'pause' - PAUSE game (opens pause menu)")
         print("  left, right - steering")
+        print("  hard left, hard right - press 2x for sharp turn")
         print("  brake - brake (auto-resumes acceleration)")
         print("  horn (H), camera (C)")
         print("\nPAUSE MENU:")
@@ -608,6 +649,12 @@ class VoiceController:
                                     print(f"[STEER] {text}")
                                     self.steer(text)
                                     last_steer_time = now
+                            elif text in ["hard left", "hard right"] and self.in_gameplay:
+                                if (now - last_steer_time) > STEER_COOLDOWN:
+                                    direction = "left" if "left" in text else "right"
+                                    print(f"[HARD-STEER] {text}")
+                                    self.hard_steer(direction)
+                                    last_steer_time = now
                             elif text == "brake" and self.in_gameplay:
                                 print(f"[BRAKE]")
                                 self.stop_acceleration()
@@ -630,6 +677,18 @@ class VoiceController:
                                     print(f"[FAST-STEER] {partial_text}")
                                     self.steer(partial_text)
                                     last_steer_time = now
+                            elif partial_text in ["hard left", "hard right"] and self.in_gameplay:
+                                if (now - last_steer_time) > STEER_COOLDOWN:
+                                    direction = "left" if "left" in partial_text else "right"
+                                    print(f"[FAST-HARD-STEER] {partial_text}")
+                                    self.hard_steer(direction)
+                                    last_steer_time = now
+                            elif partial_text == "accelerate" and self.in_gameplay:
+                                print(f"[FAST-ACCEL] holding Up Arrow")
+                                self.start_acceleration()
+                            elif partial_text == "release accelerate" and self.in_gameplay:
+                                print(f"[FAST-ACCEL-RELEASE] releasing Up Arrow")
+                                self.stop_acceleration()
                             elif partial_text == "brake" and self.in_gameplay:
                                 print(f"[FAST-BRAKE]")
                                 self.stop_acceleration()

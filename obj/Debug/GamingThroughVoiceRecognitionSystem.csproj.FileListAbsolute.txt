@@ -540,3 +540,17 @@ F:\Abdullah\GamingThroughVoiceRecognitionSystem\obj\Debug\GamingThroughVoiceReco
 F:\Abdullah\GamingThroughVoiceRecognitionSystem\obj\Debug\GamingTh.D2544EB7.Up2Date
 F:\Abdullah\GamingThroughVoiceRecognitionSystem\obj\Debug\GamingThroughVoiceRecognitionSystem.exe
 F:\Abdullah\GamingThroughVoiceRecognitionSystem\obj\Debug\GamingThroughVoiceRecognitionSystem.pdb
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\am\final.mdl
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\conf\mfcc.conf
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\conf\model.conf
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\graph\disambig_tid.int
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\graph\Gr.fst
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\graph\HCLr.fst
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\graph\phones\word_boundary.int
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\ivector\final.dubm
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\ivector\final.ie
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\ivector\final.mat
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\ivector\global_cmvn.stats
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\ivector\online_cmvn.conf
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\ivector\splice.conf
+F:\Abdullah\GamingThroughVoiceRecognitionSystem\bin\Debug\Games\VoiceGame\vosk-model-small-en-us-0.15\README

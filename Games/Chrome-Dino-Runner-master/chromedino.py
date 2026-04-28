@@ -115,7 +115,7 @@ def listen_for_voice():
     
     try:
         # ULTRA LOW LATENCY: 800 samples = 50ms chunks!
-        with sd.RawInputStream(samplerate=16000, blocksize=800, dtype='int16',
+        with sd.RawInputStream(samplerate=16000, blocksize=400, dtype='int16',
                                channels=1, callback=audio_callback):
             print("🎤 ULTRA LOW LATENCY MODE ACTIVE!")
             print("🗣️  Commands: JUMP | DOWN | START | STOP | GO")
@@ -141,7 +141,7 @@ def listen_for_voice():
                     text = result.get('text', '').strip().lower()
                     
                     if text and text != '[unk]' and text != last_processed:
-                        if (current_time - last_command_time) > 0.3:
+                        if (current_time - last_command_time) > 0.8:
                             process_voice_command(text)
                             last_processed = text
                             last_command_time = current_time
@@ -154,7 +154,7 @@ def listen_for_voice():
                     if (partial_text and 
                         partial_text != '[unk]' and 
                         partial_text != last_processed and
-                        (current_time - last_command_time) > 0.3):
+                        (current_time - last_command_time) > 0.8):
                         
                         if process_voice_command(partial_text):
                             last_processed = partial_text
@@ -218,6 +218,15 @@ def process_voice_command(text):
             print("(skip)")
         return True
     
+    # QUIT commands
+    if text in ['quit', 'quite', 'close', 'exit']:
+        if voice_command != "quit":
+            voice_command = "quit"
+            print("⚡ QUIT GAME")
+        else:
+            print("(skip)")
+        return True
+    
     print("(ignored)")
     return False
 
@@ -233,7 +242,7 @@ if VOICE_ENABLED:
             # CRITICAL: Set grammar to restrict recognition to only game commands
             # This dramatically improves accuracy and speed
             # Added phonetically similar words to improve recognition
-            grammar = '["jump", "chump", "pump", "dump", "junk", "hop", "up", "duck", "dark", "dock", "tuck", "down", "crouch", "start", "star", "begin", "pause", "paws", "stop", "resume", "go", "play", "[unk]"]'
+            grammar = '["jump", "chump", "pump", "dump", "junk", "hop", "up", "duck", "dark", "dock", "tuck", "down", "crouch", "start", "star", "begin", "pause", "paws", "stop", "resume", "go", "play", "quit", "quite", "close", "exit", "[unk]"]'
             recognizer.SetGrammar(grammar)
             
             print("✅ Vosk model loaded with command grammar!")
@@ -481,6 +490,13 @@ def main():
             if voice_command == "unpause":
                 voice_command = None
                 unpause()
+            
+            # Check for voice quit command in pause menu
+            if voice_command == "quit":
+                voice_command = None
+                voice_active = False
+                pygame.quit()
+                exit()
 
     while run:
         for event in pygame.event.get():
@@ -496,6 +512,14 @@ def main():
             voice_command = None
             run = False
             paused()
+        
+        # Check for voice quit command
+        if voice_command == "quit":
+            voice_command = None
+            voice_active = False
+            run = False
+            pygame.quit()
+            exit()
 
         current_time = datetime.datetime.now().hour
         if 7 < current_time < 19:
@@ -590,6 +614,7 @@ def menu(death_count):
         if voice_command == "start":
             voice_command = None
             main()
+   
 
 
 t1 = threading.Thread(target=menu(death_count=0), daemon=True)

@@ -20,9 +20,14 @@ game_running = False
 game_process = None
 last_command = ""
 last_command_time = 0
+last_swipe_time = 0  # Cooldown to prevent ghost swipes after slide/roll
+
+# Swipe commands that need cooldown protection
+SWIPE_COMMANDS = {"jump", "left", "right", "roll", "slide"}
+SWIPE_COOLDOWN = 0.8  # seconds
 
 # Audio queue
-q = queue.Queue()
+q = queue.Queue(maxsize=2)
 
 # Command list for grammar-based recognition
 COMMANDS = [
@@ -57,10 +62,19 @@ START_COMMANDS = {"play", "start", "go", "run"}
 CLOSE_COMMANDS = {"quit game", "exit game", "close game"}
 
 # Confidence threshold
-CONFIDENCE_THRESHOLD = 0.75
+CONFIDENCE_THRESHOLD = 0.65
+
+# Single-word instant commands that should fire from partial results
+INSTANT_COMMANDS = {"jump", "left", "right", "roll", "slide", "go", "run", "play", "start", "home", "resume", "pause", "stop"}
 
 def audio_callback(indata, frames, time_info, status):
+    if q.full():
+        try:
+            q.get_nowait()
+        except:
+            pass
     q.put(bytes(indata))
+
 
 def is_game_process_running():
     global game_process, game_running
@@ -137,7 +151,7 @@ def swipe(direction):
     cy = window.top + window.height // 2
     
     # Swipe distance and duration
-    dist = 50
+    dist = 45
     dur = 0
     
     if direction == "up":
@@ -162,13 +176,18 @@ def swipe(direction):
         pyautogui.mouseUp()
 
 def execute_command(cmd):
-    global game_running, last_command, last_command_time
+    global game_running, last_command, last_command_time, last_swipe_time
     cmd = cmd.lower().strip()
-    
-    # Prevent duplicate commands within 0.5 seconds
+
     current_time = time.time()
-    if cmd == last_command and (current_time - last_command_time) < 0.2:
-        return  # Skip duplicate
+
+    # Block any swipe command if we're still in swipe cooldown
+    if cmd in SWIPE_COMMANDS and (current_time - last_swipe_time) < SWIPE_COOLDOWN:
+        return
+
+    # Prevent duplicate commands within 1 second
+    if cmd == last_command and (current_time - last_command_time) < 1.0:
+        return
     last_command = cmd
     last_command_time = current_time
     
@@ -197,31 +216,36 @@ def execute_command(cmd):
     
     activate_game_window()
     
-    # Start/Play - click the PLAY button (bottom right area)
+    # Start/Play - click the PLAY button (slightly right of center, bottom area)
     if cmd in START_COMMANDS:
         window = get_game_window()
         if window:
-            # PLAY button is at bottom right of the window
-            play_x = window.left + window.width // 2 + 130
-            play_y = window.top + window.height - 50
+            # PLAY/Restart button is slightly right of center at the bottom
+            # Offset +60 from center to avoid Shop button on the far right
+            play_x = window.left + window.width // 2 + 170
+            play_y = window.top + window.height - 60
             pyautogui.click(play_x, play_y)
         print("START_RUN")
         return
     
     # Game controls using swipe gestures
     if cmd == "jump":
+        last_swipe_time = time.time()
         swipe("up")
         print("JUMP")
-    
+
     elif cmd == "roll" or cmd == "slide":
+        last_swipe_time = time.time()
         swipe("down")
         print("SLIDE")
-    
+
     elif cmd == "left":
+        last_swipe_time = time.time()
         swipe("left")
         print("LEFT")
-    
+
     elif cmd == "right":
+        last_swipe_time = time.time()
         swipe("right")
         print("RIGHT")
     
@@ -246,11 +270,11 @@ def execute_command(cmd):
         print("RESUME")
     
     elif cmd == "home":
-        # Click the home button (house icon at bottom left)
+        # Click the home button (house icon - leftmost of the 3 bottom buttons)
         window = get_game_window()
         if window:
-            # Home button is at bottom left of the window
-            home_x = window.left + window.width // 2 - 130
+            # Home is the leftmost button, well to the left of center
+            home_x = window.left + window.width // 2 - 190
             home_y = window.top + window.height - 50
             pyautogui.click(home_x, home_y)
         print("HOME")
@@ -313,21 +337,39 @@ def listen_for_commands():
     print("=" * 55)
     print("Listening...")
     
-    with sd.RawInputStream(samplerate=16000, blocksize=400, dtype="int16", channels=1, callback=audio_callback):
+    with sd.RawInputStream(samplerate=16000, blocksize=256, dtype="int16", channels=1, callback=audio_callback):
+        partial_fired = False
         while True:
             data = q.get()
             if recognizer.AcceptWaveform(data):
                 result_json = recognizer.Result()
-                passed, text = check_confidence(result_json)
-                if passed and text and text.strip():  # Ensure text is not empty
-                    execute_command(text)
+                # Skip final result if partial already handled this command
+                if not partial_fired:
+                    passed, text = check_confidence(result_json)
+                    if passed and text and text.strip():
+                        execute_command(text)
+                partial_fired = False  # Reset flag after final result
+            else:
+                # Check partial result for instant single-word commands
+                partial_json = recognizer.PartialResult()
+                try:
+                    partial = json.loads(partial_json).get("partial", "").strip().lower()
+                    if partial and partial in INSTANT_COMMANDS:
+                        execute_command(partial)
+                        partial_fired = True  # Mark so final result is skipped
+                        recognizer.Reset()
+                except:
+                    pass
 
 if __name__ == "__main__":
     import sys
-    
+
     # Check for --auto-launch flag (for app integration)
     if "--auto-launch" in sys.argv:
         print("AUTO-LAUNCH MODE: Starting game automatically...")
         start_game()
-    
-    listen_for_commands()
+
+    try:
+        listen_for_commands()
+    except KeyboardInterrupt:
+        print("\nStopped.")

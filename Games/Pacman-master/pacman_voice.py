@@ -22,7 +22,7 @@ voice_queue = queue.Queue()
 current_direction = None
 last_command = None
 last_command_time = 0
-COMMAND_COOLDOWN = 0.8  # Seconds between same command
+COMMAND_COOLDOWN = 0.5  # Seconds between same command
 
 def voice_recognition_thread():
     global current_direction, last_command, last_command_time
@@ -41,7 +41,7 @@ def voice_recognition_thread():
     print("Say: 'quit game' or 'exit' to quit")
     print("="*50 + "\n")
     
-    with sd.RawInputStream(samplerate=16000, blocksize=400, dtype='int16',
+    with sd.RawInputStream(samplerate=16000, blocksize=200, dtype='int16',
                           channels=1, callback=lambda indata, frames, time, status: voice_queue.put(bytes(indata))):
         while True:
             data = voice_queue.get()
@@ -436,6 +436,45 @@ b_h = (3*60)+19 #Binky height
 i_w = 303-16-32 #Inky width
 c_w = 303+(32-16) #Clyde width
 
+GRID = 30  # maze cell size
+
+def is_aligned(pacman):
+    """Check if pacman is snapped to a grid cell center."""
+    cx = pacman.rect.left + 16  # sprite is 32px wide
+    cy = pacman.rect.top + 16
+    return (cx % GRID < 4 or cx % GRID > GRID - 4) and \
+           (cy % GRID < 4 or cy % GRID > GRID - 4)
+
+def snap_to_grid(pacman):
+    """Snap pacman to nearest grid cell."""
+    cx = pacman.rect.left + 16
+    cy = pacman.rect.top + 16
+    snapped_cx = round(cx / GRID) * GRID
+    snapped_cy = round(cy / GRID) * GRID
+    pacman.rect.left = snapped_cx - 16
+    pacman.rect.top = snapped_cy - 16
+
+def count_open_directions(pacman, wall_list, current_dx, current_dy):
+    """Count how many directions are open from current position (excluding reverse)."""
+    directions = [(30, 0), (-30, 0), (0, 30), (0, -30)]
+    open_dirs = []
+    orig_left = pacman.rect.left
+    orig_top = pacman.rect.top
+
+    for dx, dy in directions:
+        # Skip the reverse direction to avoid counting going back
+        if dx == -current_dx and dy == -current_dy and (current_dx != 0 or current_dy != 0):
+            continue
+        pacman.rect.left = orig_left + dx
+        pacman.rect.top = orig_top + dy
+        hit = pygame.sprite.spritecollide(pacman, wall_list, False)
+        if not hit:
+            open_dirs.append((dx, dy))
+        pacman.rect.left = orig_left
+        pacman.rect.top = orig_top
+
+    return open_dirs
+
 def startGame():
   global current_direction
 
@@ -515,6 +554,7 @@ def startGame():
 
   done = False
   paused = False
+  waiting_at_intersection = False  # True when stopped at a junction
 
   i = 0
 
@@ -529,15 +569,19 @@ def startGame():
               if event.key == pygame.K_LEFT:
                   Pacman.change_x = -30
                   Pacman.change_y = 0
+                  waiting_at_intersection = False
               if event.key == pygame.K_RIGHT:
                   Pacman.change_x = 30
                   Pacman.change_y = 0
+                  waiting_at_intersection = False
               if event.key == pygame.K_UP:
                   Pacman.change_x = 0
                   Pacman.change_y = -30
+                  waiting_at_intersection = False
               if event.key == pygame.K_DOWN:
                   Pacman.change_x = 0
                   Pacman.change_y = 30
+                  waiting_at_intersection = False
               if event.key == pygame.K_SPACE:
                   paused = not paused
           
@@ -545,21 +589,26 @@ def startGame():
       if current_direction == 'left':
           Pacman.change_x = -30
           Pacman.change_y = 0
+          waiting_at_intersection = False
           current_direction = None
       elif current_direction == 'right':
           Pacman.change_x = 30
           Pacman.change_y = 0
+          waiting_at_intersection = False
           current_direction = None
       elif current_direction == 'up':
           Pacman.change_x = 0
           Pacman.change_y = -30
+          waiting_at_intersection = False
           current_direction = None
       elif current_direction == 'down':
           Pacman.change_x = 0
           Pacman.change_y = 30
+          waiting_at_intersection = False
           current_direction = None
       elif current_direction == 'stop':
-          paused = True
+          Pacman.change_x = 0
+          Pacman.change_y = 0
           current_direction = None
       elif current_direction == 'go':
           paused = False
@@ -571,8 +620,19 @@ def startGame():
       # ALL EVENT PROCESSING SHOULD GO ABOVE THIS COMMENT
    
       # ALL GAME LOGIC SHOULD GO BELOW THIS COMMENT
-      if not paused:
-          Pacman.update(wall_list,gate)
+      if not paused and not waiting_at_intersection:
+          # Check for intersection when aligned to grid
+          if is_aligned(Pacman) and (Pacman.change_x != 0 or Pacman.change_y != 0):
+              snap_to_grid(Pacman)
+              open_dirs = count_open_directions(Pacman, wall_list, Pacman.change_x, Pacman.change_y)
+              # If more than 1 option exists (not counting straight ahead only), stop and wait
+              if len(open_dirs) > 1:
+                  waiting_at_intersection = True
+                  Pacman.change_x = 0
+                  Pacman.change_y = 0
+                  print("Intersection! Say a direction: left, right, up, or down")
+
+          Pacman.update(wall_list, gate)
 
           # Update ghosts every other frame to reduce their speed
           if i % 2 == 0:

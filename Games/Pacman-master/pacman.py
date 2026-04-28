@@ -457,17 +457,17 @@ def startGame():
 
           if event.type == pygame.KEYDOWN:
               if event.key == pygame.K_LEFT:
-                  Pacman.change_x = -30
+                  Pacman.change_x = -45
                   Pacman.change_y = 0
               if event.key == pygame.K_RIGHT:
-                  Pacman.change_x = 30
+                  Pacman.change_x = 45
                   Pacman.change_y = 0
               if event.key == pygame.K_UP:
                   Pacman.change_x = 0
-                  Pacman.change_y = -30
+                  Pacman.change_y = -45
               if event.key == pygame.K_DOWN:
                   Pacman.change_x = 0
-                  Pacman.change_y = 30
+                  Pacman.change_y = 45
           
       # ALL EVENT PROCESSING SHOULD GO ABOVE THIS COMMENT
    
